@@ -6,7 +6,7 @@ export default function App() {
   const [level, setLevel] = useState("");
 
   const handleJoin = () => {
-    const message = `🔥 ANS GUILD 🔥
+    const message = `🔥 TWISTED BIG 🔥
 Nickname: ${nickname}
 UID: ${uid}
 Level: ${level}`;
