@@ -1,0 +1,90 @@
+@import "tailwindcss";
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background-color: #050505;
+  color: #fff;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+#root { width: 100%; min-height: 100svh; }
+
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(74,222,128,0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(74,222,128,0.035) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+.fade-in-up { animation: fade-in-up 0.6s ease forwards; }
+.float-anim { animation: float 5s ease-in-out infinite; }
+
+.shimmer-text {
+  background: linear-gradient(90deg, #4ade80, #86efac, #4ade80, #86efac);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 3s linear infinite;
+}
+
+.glow-green { box-shadow: 0 0 30px rgba(74,222,128,0.25), 0 0 60px rgba(74,222,128,0.08); }
+.glow-green-sm { box-shadow: 0 0 15px rgba(74,222,128,0.2); }
+
+.card-border {
+  position: relative;
+  isolation: isolate;
+}
+.card-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(74,222,128,0.4) 0%, rgba(74,222,128,0.05) 50%, rgba(74,222,128,0.2) 100%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+  animation: pulse-glow 4s ease-in-out infinite;
+}
+
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px #0a0a0a inset !important;
+  -webkit-text-fill-color: #fff !important;
+}
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #0a0a0a; }
+::-webkit-scrollbar-thumb { background: #1a1a1a; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #4ade80; }
